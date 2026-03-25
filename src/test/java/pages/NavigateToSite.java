@@ -12,7 +12,7 @@ public class NavigateToSite {
             num = num / 10;
 
         }
-        System.out.print(rev+" ");
+        System.out.print(rev+"           ");
 
 
     }

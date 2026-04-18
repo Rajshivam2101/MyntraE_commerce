@@ -1,31 +1,44 @@
 package pages;
 
+import assertutil.AssertUtil;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utilty.SelectUtil;
+import utilty.WaitsUtil;
 
 public class HomePage {
 
-    public static void main(String[] args) {
+    WebDriver driver;
+
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this); // ✅ MUST
+    }
+
+    @FindBy(xpath = "//div//span[@class='b3wTlE']")
+    private WebElement loginAlert;
+
+    @FindBy(xpath = "//div[@class='a4jtpw']//div//h1")
+    private WebElement validation;
 
 
-        int[] arr = {8, 6, 3, 4, 32, 4, 4, 25436, 56, 4, 5, 23, 5, 32, 423, 4, 23, 43, 24, 32, 4, 23, 45, 234, 2};
-
-        //System.out.println(Arrays.toString(arr) + " after reversing the array of integer");
-
-        int temp;
-
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-
-                if (arr[j] > arr[j + 1]) {
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-
-            }
+    public void loginSkip() {
+        try {
+            WaitsUtil.waitForVisibility(driver, loginAlert, 10);
+            loginAlert.click();
+        } catch (Exception e) {
+            System.out.println("Alert is handled");
         }
-        for (int list : arr) {
-            System.out.print(list + " ");
+    }
 
-        }
+    public void validateScreen() {
+        SelectUtil.handleAlertIfPresent(driver);
+        WaitsUtil.waitForVisibility(driver, validation, 10);
+        String webSite = validation.getText();
+        AssertUtil.assertEquals(webSite, "Flipkart: India's Ultimate One-Stop Online Shopping Destination", "pass");
+        System.out.println("WebSite Name:" + webSite);
+
     }
 }

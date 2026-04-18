@@ -29,7 +29,7 @@ public class HomePage {
             WaitsUtil.waitForVisibility(driver, loginAlert, 10);
             loginAlert.click();
         } catch (Exception e) {
-            System.out.println("Alert is handled");
+            System.out.println("Alert Handled");
         }
     }
 

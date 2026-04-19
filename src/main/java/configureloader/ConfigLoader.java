@@ -11,7 +11,8 @@ public class ConfigLoader {
     private static final Properties PROPERTIES = new Properties();
 
     static {
-        try (InputStream inputStream = ConfigLoader.class.getClassLoader().getResourceAsStream("configureloader/config.properties")) {
+        try (InputStream inputStream = ConfigLoader.class.getClassLoader().
+                getResourceAsStream("configureloader/config.properties")) {
 
             if (inputStream == null) {
                 throw new RuntimeException("config.properties not found in classpath");

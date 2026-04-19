@@ -13,10 +13,10 @@ public class BaseTest {
         DriverManager.applicationOpen();
     }
 
-    @AfterTest
-    public void tearDown() {
-        DriverManager.close();
-    }
+//    @AfterTest
+//    public void tearDown() {
+//        DriverManager.close();
+//    }
 
     public static WebDriver getDriver() {
         return DriverManager.getDriver();

@@ -7,7 +7,11 @@ public enum ConfigKey {
 
     BROWSER("browser"),
 
-    URL("url");
+    URL("url"),
+
+    USERNAME("username"),
+
+    PASSWORD("password");
 
     private final String key;
 

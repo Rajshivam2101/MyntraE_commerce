@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utilty.SelectUtil;
 import utilty.WaitsUtil;
 
 public class HomePage {
@@ -17,28 +16,18 @@ public class HomePage {
         PageFactory.initElements(driver, this); // ✅ MUST
     }
 
-    @FindBy(xpath = "//div//span[@class='b3wTlE']")
-    private WebElement loginAlert;
-
-    @FindBy(xpath = "//div[@class='a4jtpw']//div//h1")
-    private WebElement validation;
+    @FindBy(xpath = "//span[@class='a-size-base a-color-base']")
+    private WebElement title;
 
 
-    public void loginSkip() {
+    public void getTitle() {
+
         try {
-            WaitsUtil.waitForVisibility(driver, loginAlert, 10);
-            loginAlert.click();
+            WaitsUtil.waitForVisibility(driver, title, 10);
+            AssertUtil.assertEquals(title.getText(), "You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.", "Pass");
+            System.out.println("Title: " + title.getText());
         } catch (Exception e) {
-            System.out.println("Alert Handled");
+            System.out.println("Titile not found");
         }
-    }
-
-    public void validateScreen() {
-        SelectUtil.handleAlertIfPresent(driver);
-        WaitsUtil.waitForVisibility(driver, validation, 10);
-        String webSite = validation.getText();
-        AssertUtil.assertEquals(webSite, "Flipkart: India's Ultimate One-Stop Online Shopping Destination", "pass");
-        System.out.println("WebSite Name:" + webSite);
-
     }
 }

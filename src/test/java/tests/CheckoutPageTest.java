@@ -10,10 +10,12 @@ public class CheckoutPageTest {
 
     WebDriver driver;
 
+
     @Test()
     public void CheckoutPageTest() {
         CheckoutPage checkoutPage = new CheckoutPage(getDriver());
         checkoutPage.proceedToCheckout();
+        checkoutPage.backToHomePage();
     }
 
 }

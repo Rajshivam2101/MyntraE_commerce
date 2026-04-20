@@ -20,6 +20,7 @@ public class HomePage {
     private WebElement title;
 
 
+
     public void getTitle() {
 
         try {
@@ -27,7 +28,9 @@ public class HomePage {
             AssertUtil.assertEquals(title.getText(), "You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.", "Pass");
             System.out.println("Title: " + title.getText());
         } catch (Exception e) {
-            System.out.println("Titile not found");
+            System.out.println("Title is not found");
         }
     }
+
+
 }

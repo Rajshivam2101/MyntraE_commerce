@@ -1,16 +1,18 @@
 package pages;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utilty.WindowHandle;
-
+import utilty.WaitsUtil;
 
 import java.util.List;
 
+
 public class ProductDetailsPage {
     WebDriver driver;
+
 
     public ProductDetailsPage(WebDriver driver) {
         this.driver = driver;
@@ -24,16 +26,17 @@ public class ProductDetailsPage {
     @FindBy(xpath = "//input[@id='add-to-cart-button']")
     private WebElement addToCartButton;
 
-    public void ItemList() {
 
+    public void ItemList() {
         for (WebElement itemLists : itemList) {
-            try {
-                itemLists.click();
-                addToCartButton.click();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+
+            WaitsUtil.waitForClickable(driver, itemLists, 10);
+            itemLists.click();
+
+            WaitsUtil.waitForClickable(driver, addToCartButton, 10);
+            addToCartButton.click();
         }
 
     }
 }
+

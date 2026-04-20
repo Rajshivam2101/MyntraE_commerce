@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import utilty.SendKeysUtil;
 import utilty.WaitsUtil;
 
-import javax.xml.xpath.XPath;
 
 public class SearchResultsPage {
 

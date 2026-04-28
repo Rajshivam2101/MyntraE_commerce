@@ -102,6 +102,9 @@ public class WaitsUtil {
                         .ignoring(NoSuchElementException.class)
                         .ignoring(StaleElementReferenceException.class);
 
+//        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+
+
         return wait.until(driver1 -> driver1.findElement(locator));
 
     }

@@ -1,6 +1,6 @@
 package pages;
 
-import assertutil.AssertUtil;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,12 +20,11 @@ public class HomePage {
     private WebElement title;
 
 
-
     public void getTitle() {
 
         try {
             WaitsUtil.waitForVisibility(driver, title, 10);
-            AssertUtil.assertEquals(title.getText(), "You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.", "Pass");
+            Assert.assertEquals("You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.", title.getText());
             System.out.println("Title: " + title.getText());
         } catch (Exception e) {
             System.out.println("Title is not found");

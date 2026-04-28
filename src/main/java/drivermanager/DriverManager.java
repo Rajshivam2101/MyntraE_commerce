@@ -79,6 +79,7 @@ public class DriverManager {
         firefoxOptions.addArguments("--start-maximized");
         return firefoxOptions;
 
+
     }
 
     public static void applicationOpen() {
